@@ -136,9 +136,11 @@ export default class LightboxOverlay extends Component {
       this.open();
     }
     this._subscription = DeviceEventEmitter.addListener('screenSizeDidChange', newScreenSize => {
-      this.setState({
-        screenSize: newScreenSize,
-      });
+      const { isOpen } = this.props;
+      isOpen &&
+        this.setState({
+          screenSize: newScreenSize,
+        });
     });
   }
 
